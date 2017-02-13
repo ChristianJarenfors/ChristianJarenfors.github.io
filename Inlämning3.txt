@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Uppgift 3 Javascript</title>
+	</head>
+	<body>
+		<input type="text" id="textInput"/>
+		<button id="addButton">Lägg till...</button>
+		<p>Lista med tillagda saker:</p>
+		<ol id="lista">
+			<li id="element0">Nummer 1</li>
+
+		</ol>
+	</body>
+	<script src="Inlämning3 Javascript.js"></script>
+</html
