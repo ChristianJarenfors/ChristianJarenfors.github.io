@@ -15,7 +15,7 @@ console.log(svar1 + " " + x.population);
 })
 .then(function(){
 	console.log(svar1);
-	document.getElementById("svar1").innerHTML="Det bor "+ svar1+ " människor i hela världen";
+	document.getElementById("svar1").innerHTML="Det bor "+ svar1+ " mÃ¤nniskor i hela vÃ¤rlden";
 
 })
 .then(function(){
@@ -32,7 +32,7 @@ console.log(svar1 + " " + x.population);
 		svar2+=x.population;
 		console.log(svar2);
 		}
-		document.getElementById("svar2").innerHTML=`Det finns ${svar2} människor i Europa`;
+		document.getElementById("svar2").innerHTML=`Det finns ${svar2} mÃ¤nniskor i Europa`;
 	}
 	newjson = jsonholder.filter(x=>x.name=="Zimbabwe")[0];
 	console.log(newjson.length);
@@ -50,7 +50,7 @@ console.log(svar1 + " " + x.population);
 		}
 	}
 	console.log(lowestcountry);
-	document.getElementById("svar4").innerHTML=`${lowestcountry.name} är det land med minst population`;
+	document.getElementById("svar4").innerHTML=`${lowestcountry.name} Ã¤r det land med minst population`;
 	
 	{
 		let listOfContinents = [];
@@ -85,7 +85,7 @@ console.log(svar1 + " " + x.population);
 			highestcontinent=x;
 			highestpopulation=temp;
 		}
-		document.getElementById("svar5").innerHTML=`${highestcontinent.continent} är den kontinent med mest population`;
+		document.getElementById("svar5").innerHTML=`${highestcontinent.continent} Ã¤r den kontinent med mest population`;
 	}
 	}
 	
