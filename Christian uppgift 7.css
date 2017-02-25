@@ -1,0 +1,13 @@
+table{
+    border:solid black 2px;
+}
+.TableHead{
+    border:solid purple 3px;
+    padding:2px;
+}
+.TableData{
+/*
+    border:dotted orange 2px;*/
+    padding:4px;
+
+}
