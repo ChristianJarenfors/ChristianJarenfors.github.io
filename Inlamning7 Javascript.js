@@ -3,7 +3,7 @@ let jsonholder;
 
 class Filterinput extends React.Component{
     render(){
-        return <input type="text" onChange={this.props.filterChange} />
+        return <input type="text"  onChange={this.props.filterChange} />
     }
 }
 class TableData extends React.Component{
@@ -162,17 +162,18 @@ loadData(){
         //console.log("BOOM2" + this.state.data + jsonholder);
         let tablebody = <TableDataRow dataobject={this.state.data} choosenId={this.state.choosenId} filterString={this.state.filterString} selectedCountryIndex={this.state.selectedCountryIndex} changeHandeler={this.changeHandeler} deleteClick={this.functionDelete} selectedChangeIndex={this.selectedChangeIndex}/>;
         //console.log("BOOM3");
-            
+          let amountOfItems =   this.state.data.filter((x)=>
+                            (x.continent.toLowerCase().includes(this.state.filterString.toLowerCase())||x.name.toLowerCase().includes(this.state.filterString.toLowerCase())||this.state.filterString=="")).length;
         //console.log(tablehead);
         //console.log(tablebody);
-        return <div><h2>Filtrera tabellen</h2><Filterinput filterChange={this.filterChange} /><table className="table-bordered table-hover">
+        return <div><h2 >Filtrera tabellen</h2><Filterinput filterChange={this.filterChange} /><table className="table-bordered table-hover">
             <thead>
             {tablehead} 
             </thead>
             
             {tablebody}
         
-            </table><p>Antal element i tabellen: {this.state.data.length}</p></div>;
+            </table><p>Antal element i tabellen: {amountOfItems}</p></div>;
         }
     }
 }
