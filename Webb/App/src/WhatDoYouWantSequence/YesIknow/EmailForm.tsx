@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React, { createRef, useRef, useState } from "react";
 import emailjs from "emailjs-com";
-
+import TimezonePicker, {
+  ChildRef,
+  ITimeZone,
+} from "../../components/timezone-picker/timezone-picker";
+import ReCAPTCHA from "react-google-recaptcha";
+import "./EmailForm.less";
 const EMAIL_LIMIT = 3;
 const LOCAL_STORAGE_KEY = "email_count";
 const serviceId = "service_prrmu89";
@@ -9,7 +14,8 @@ const publickey = "36TUg4J7bVP4sOsKc";
 const EmailForm: React.FC = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [timezone, setTimezone] = useState<ITimeZone | null>(null);
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
 
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
@@ -31,8 +37,11 @@ const EmailForm: React.FC = () => {
     emailjs.init(publickey); // Your EmailJS user ID
     emailjs
       .send(serviceId, YOUR_TEMPLATE_ID, {
+        from_name: name,
         from_email: email,
-        message,
+
+        reply_to: email,
+        timezone,
       })
       .then(
         (result: ITextObject) => {
@@ -55,30 +64,56 @@ const EmailForm: React.FC = () => {
         }
       );
   };
-
+  const childRef = createRef<ChildRef>();
+  const newTimeZone = (tz: ITimeZone | null) => (tz ? setTimezone(tz) : null);
+  const handleRecaptchaChange = (token: string | null) => {
+    setRecaptchaToken(token);
+    // Optionally send token to backend for verification
+  };
   return (
-    <form onSubmit={sendEmail}>
-      <div>
-        <label>Email:</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
+    <div id="form-container">
+      <form onSubmit={sendEmail}>
+        <script
+          src="https://www.google.com/recaptcha/api.js"
+          async
+          defer
+        ></script>
+        <div>
+          <label>Your Name:</label>
+          <br />
+          <input
+            className="input-style"
+            type="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+
+        <TimezonePicker newTimeZone={newTimeZone} />
+        <div>
+          <label>Your Email:</label>
+          <br />
+          <input
+            className="input-style"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div className="g-recaptcha" data-sitekey="your_site_key"></div>
+        <button className="email-button" type="submit">
+          I am interested to know more
+        </button>
+        <ReCAPTCHA
+          sitekey="6LdDOwoqAAAAAMWp4s9E-RXr84-uPqyVaojohWvC" // Replace with your site key
+          onChange={handleRecaptchaChange}
         />
-      </div>
-      <div>
-        <label>Message:</label>
-        <textarea
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          required
-        />
-      </div>
-      <button type="submit">Send Email</button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      {success && <p style={{ color: "green" }}>{success}</p>}
-    </form>
+        {error && <p style={{ color: "red" }}>{error}</p>}
+        {success && <p style={{ color: "green" }}>{success}</p>}
+      </form>
+    </div>
   );
 };
 interface ITextObject {
