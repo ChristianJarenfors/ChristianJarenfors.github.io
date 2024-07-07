@@ -17,41 +17,9 @@ import YesIknowWhatIWant from "./WhatDoYouWantSequence/YesIknow/YesIknowWhatIWan
 import NoIDontKnowConsiousslyWhatIWantYet from "./WhatDoYouWantSequence/NoNotYet/NoIDontKnowConsiousslyWhatIWantYet";
 
 function App() {
-  const [Contintue, setContintue] = useState(0);
-  const incrementContinue = () => setContintue(Contintue + 1);
-
   return (
-    <div className="App" onClick={() => incrementContinue()}>
+    <div className="App">
       <Router>
-        {/* <nav>
-          <ul className="button-list">
-            <li className="button-item">
-              <Link to="/">
-                <button>Home</button>
-              </Link>
-            </li>
-            <li className="button-item">
-              <Link to="/about">
-                <button>About</button>
-              </Link>
-            </li>
-            <li className="button-item">
-              <Link to="/contact">
-                <button>Contact</button>
-              </Link>
-            </li>
-            <li className="button-item">
-              <Link to="/flappyCanvas">
-                <button>flappyCanvas</button>
-              </Link>
-            </li>
-          </ul>
-        </nav> */}
-        {Contintue > 3 && false ? (
-          <Link id="continue_towards_your_goal" to="/continue">
-            <h1>Continue towards your goal..</h1>
-          </Link>
-        ) : null}
         <Routes>
           <Route
             path="/"
