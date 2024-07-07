@@ -11,12 +11,24 @@
     />
     <link rel="apple-touch-icon" href="/logo192.png" />
     <link rel="manifest" href="/manifest.json" />
-    <title>React App</title>
+    <title>DreamGoToBeReal</title>
     <script defer="defer" src="/static/js/main.f18f5be4.js"></script>
     <link href="/static/css/main.f855e6bc.css" rel="stylesheet" />
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-2P7Q71RKZ6"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-2P7Q71RKZ6");
+    </script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <App></App>
   </body>
 </html>
