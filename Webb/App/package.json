@@ -1,5 +1,6 @@
 {
   "name": "my-app",
+  "homepage": "https://christianjarenfors.github.io/WhatDoYouReallyWant",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
@@ -24,6 +25,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
@@ -50,6 +53,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@types/react-google-recaptcha": "^2.1.9",
+    "gh-pages": "^6.1.1",
     "less": "^4.2.0",
     "less-loader": "^12.2.0"
   }
