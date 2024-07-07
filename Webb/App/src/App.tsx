@@ -15,7 +15,7 @@ import YesIknowWhatIWant from "./WhatDoYouWantSequence/YesIknow/YesIknowWhatIWan
 import NoIDontKnowConsiousslyWhatIWantYet from "./WhatDoYouWantSequence/NoNotYet/NoIDontKnowConsiousslyWhatIWantYet";
 import NoPage from "./NoPage";
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
       <Router>
@@ -55,6 +55,6 @@ function App() {
       </Router>
     </div>
   );
-}
+};
 
 export default App;
