@@ -2,12 +2,10 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link,
   Navigate,
 } from "react-router-dom";
 import "./header.less";
 
-import { useState } from "react";
 import AsSimplyAsJustKnowingWhatItIs from "./WhatDoYouWantSequence/AsSimplyAsJustKnowingWhatItIs";
 import WhatDoYouReallyWant from "./WhatDoYouWantSequence/WhatDoYouReallyWant";
 import DoYouKnowWhatYouWant from "./WhatDoYouWantSequence/DoYouKnowWhatYouWant";
@@ -15,6 +13,7 @@ import HowDoesItFeel from "./WhatDoYouWantSequence/HowDoesItFeel";
 import IKnowWhatIWantOrNotYet from "./WhatDoYouWantSequence/IKnowWhatIWantOrNotYet";
 import YesIknowWhatIWant from "./WhatDoYouWantSequence/YesIknow/YesIknowWhatIWant";
 import NoIDontKnowConsiousslyWhatIWantYet from "./WhatDoYouWantSequence/NoNotYet/NoIDontKnowConsiousslyWhatIWantYet";
+import NoPage from "./NoPage";
 
 function App() {
   return (
@@ -51,6 +50,7 @@ function App() {
             path="/NoIDontKnowConsiousslyWhatIWantYet"
             element={<NoIDontKnowConsiousslyWhatIWantYet />}
           />
+          <Route path="/*" element={<NoPage />} />
         </Routes>
       </Router>
     </div>

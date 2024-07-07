@@ -1,7 +1,6 @@
-import React, { createRef, useRef, useState } from "react";
+import React, { useState } from "react";
 import emailjs from "emailjs-com";
 import TimezonePicker, {
-  ChildRef,
   ITimeZone,
 } from "../../components/timezone-picker/timezone-picker";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -15,8 +14,6 @@ const EmailForm: React.FC = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [timezone, setTimezone] = useState<ITimeZone | null>(null);
-  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
-
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
 
@@ -64,12 +61,7 @@ const EmailForm: React.FC = () => {
         }
       );
   };
-  const childRef = createRef<ChildRef>();
   const newTimeZone = (tz: ITimeZone | null) => (tz ? setTimezone(tz) : null);
-  const handleRecaptchaChange = (token: string | null) => {
-    setRecaptchaToken(token);
-    // Optionally send token to backend for verification
-  };
   return (
     <div id="form-container">
       <form onSubmit={sendEmail}>
@@ -108,7 +100,6 @@ const EmailForm: React.FC = () => {
         </button>
         <ReCAPTCHA
           sitekey="6LdDOwoqAAAAAMWp4s9E-RXr84-uPqyVaojohWvC" // Replace with your site key
-          onChange={handleRecaptchaChange}
         />
         {error && <p style={{ color: "red" }}>{error}</p>}
         {success && <p style={{ color: "green" }}>{success}</p>}

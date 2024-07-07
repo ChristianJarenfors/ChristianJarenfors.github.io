@@ -1,8 +1,5 @@
-import { useNavigate } from "react-router-dom";
 import EmailForm from "./EmailForm";
 function YesIknowWhatIWant() {
-  const navigate = useNavigate();
-  const handleOnClick = () => navigate("/DoYouKnowWhatYouWant");
   return (
     <header>
       <h1>
