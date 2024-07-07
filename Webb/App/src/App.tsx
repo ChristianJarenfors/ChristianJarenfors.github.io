@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./Home";
 import About from "./About";
 import Contact from "./Contact";
-import logo from "./logo.svg";
+import "./App.less";
 import "./App.css";
 import FlappyCanvas from "./FlappyCanvas";
 
@@ -40,17 +40,3 @@ function App() {
 }
 
 export default App;
-
-interface Bird {
-  x: number;
-  y: number;
-  angle: number;
-  radius: number;
-  velocityY: number;
-  velocityX: number;
-  gravity: number;
-  jump: number;
-  draw: () => void;
-  flap: () => void;
-  update: () => void;
-}
